@@ -13,29 +13,18 @@
   <body>
     <div class="container">
       <?php require_once "../view/partials/menu.php" ?>
-      <a class="btn btn-secondary" href="create.php" role="button">Crear municipio</a>
-      <h1>Listado de municipios</h1>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php foreach ($municipios as $municipio) { ?>
-            <tr>
-              <td><?= $municipio->id ?></td>
-              <td><?= $municipio->nombre ?></td>
-              <td>
-                <a class="btn btn-primary" href="edit.php?id=<?= $municipio->id ?>" role="button">Editar</a>
-                <a class="btn btn-danger" href="edit.php?id=<?= $municipio->id ?>" role="button">Eliminar</a>
-              </td>
-            </tr>
-          <?php } ?>
-        </tbody>
-      </table>
+      <h1>editar municipio</h1>
+      <form method="post" action="update.php">
+        <div class="form-group">
+          <label for="id">Id del municipio</label>
+          <input type="text" class="form-control" id="id" name="id" value="<?= $municipioEncontrado->id ?>" readonly>
+        </div>
+        <div class="form-group">
+          <label for="nombre">Nombre del municipio</label>
+          <input type="text" class="form-control" id="nombre" name="nombre" value="<?= $municipioEncontrado->nombre ?>">
+        </div>
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+      </form>
     </div>
 
 

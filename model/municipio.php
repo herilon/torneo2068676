@@ -25,5 +25,37 @@
 			return $consulta->rowCount();
 			$this->cerrar();
 		}
+
+		public function select(){
+			$this->abrir();
+			$consulta = $this->conexion->prepare("SELECT * FROM municipios");
+			$consulta->setFetchMode(PDO::FETCH_OBJ);
+			$consulta->execute();
+			return $consulta->fetchAll();
+			$this->cerrar();
+		}
+
+		public function update(){
+			$this->abrir();
+			$consulta = $this->conexion->prepare("UPDATE municipios SET nombre=? WHERE id=?");
+			$consulta->bindParam(1, $this->nombre);
+			$consulta->bindParam(2, $this->id);
+			$consulta->execute();
+			return $consulta->rowCount();
+			$this->cerrar();
+		}
+
+		public function find($id){
+			$this->abrir();
+			$consulta = $this->conexion->prepare("SELECT * FROM municipios WHERE id=?");
+			$consulta->bindParam(1, $id);
+			$consulta->setFetchMode(PDO::FETCH_OBJ);
+			$consulta->execute();
+			$municipios = $consulta->fetchAll();
+			return $municipios[0];
+			$this->cerrar();
+		}
+
+
 	}
 ?>
