@@ -5,9 +5,9 @@
 	$municipio->nombre = $_POST["nombre"];
 	$filas = $municipio->update();
 	if($filas > 0){
-		echo "Municiio actualizado";
+		header("location:index.php?accion=3");
 	}
 	else{
-		echo "No se actualizo el municipio";
+		header("location:index.php?accion=4");
 	}
 ?>

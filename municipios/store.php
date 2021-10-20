@@ -4,9 +4,9 @@
 	$municipio->nombre = $_POST["nombre"];
 	$filas = $municipio->insert();
 	if($filas > 0){
-		echo "Municiio insertado";
+		header("location:index.php?accion=1");
 	}
 	else{
-		echo "No se inserto el municipio";
+		header("location:index.php?accion=2");
 	}
 ?>

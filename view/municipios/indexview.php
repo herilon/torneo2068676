@@ -13,6 +13,9 @@
   <body>
     <div class="container">
       <?php require_once "../view/partials/menu.php" ?>
+      <?php if(isset($_GET["accion"])) { ?>
+        <div class="<?= $clase ?>" role="alert"><?= $mensaje ?></div>
+      <?php } ?>
       <a class="btn btn-secondary" href="create.php" role="button">Crear municipio</a>
       <h1>Listado de municipios</h1>
       <table class="table">
@@ -30,7 +33,7 @@
               <td><?= $municipio->nombre ?></td>
               <td>
                 <a class="btn btn-primary" href="edit.php?id=<?= $municipio->id ?>" role="button">Editar</a>
-                <a class="btn btn-danger" href="edit.php?id=<?= $municipio->id ?>" role="button">Eliminar</a>
+                <a class="btn btn-danger" href="#" role="button" onclick="eliminarmunicipio(<?= $municipio->id ?>)">Eliminar</a>
               </td>
             </tr>
           <?php } ?>
@@ -39,6 +42,7 @@
     </div>
 
 
+    <script type="text/javascript" src="../view/js/script.js"></script>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->

@@ -55,6 +55,14 @@
 			return $municipios[0];
 			$this->cerrar();
 		}
+		public function delete($id){
+			$this->abrir();
+			$consulta = $this->conexion->prepare("DELETE FROM municipios WHERE id=?");
+			$consulta->bindParam(1, $id);
+			$consulta->execute();
+			return $consulta->rowCount();
+			$this->cerrar();
+		}
 
 
 	}
